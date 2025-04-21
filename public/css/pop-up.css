@@ -1,0 +1,271 @@
+/* !!POP UP */
+
+.pop_up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 39px;
+    width: 1215px;
+    height: 616px;
+    background-color: rgb(34, 34, 34);
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 1000;
+}
+
+.pop_up.active {
+    filter: none;
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    transition: 0.5s;
+}
+.blur_active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+.pop_up .exit_button {
+    position: absolute;
+    top: -15px;
+    right: -18px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+
+    /* bottom: 100px; */
+    width: 66px;
+    height: 66px;
+    background-color: rgb(27, 27, 27);
+    /* opacity: 0.5; */
+    z-index: 1001;
+}
+.pop_up .exit_button i {
+    position: absolute;
+    font-size: 30px;
+    padding-top: 31px;
+    padding-left: 23px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    align-items: center;
+    /* border-right: 2px solid rgba(99, 99, 99, 0.5); */
+    transition: all 0.5s;
+}
+
+/* .pop_up .exit_button i:hover {
+    color: white;
+} */
+.pop_up .flex {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.pop_up .flex .kiri {
+    display: flex;
+    margin-left: 19px;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pop_up .flex .kiri .kiri-container {
+    background-color: purple;
+    width: 321px;
+    height: 578px;
+    /* width: 1156px; */
+    margin: 20px;
+    transition: none;
+    border-radius: 20px;
+}
+
+.pop_up .flex .kiri img {
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.pop_up .flex .kiri video {
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.pop_up .flex .kanan {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.pop_up .flex .kanan ul li {
+    color: white;
+    list-style: none;
+    font-size: 30px;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5;
+}
+.kanan ul li::before {
+    margin-left: auto;
+}
+
+.kanan ul li::after,
+.kanan ul li::before {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    transition: 0.5s;
+}
+
+.kanan ul li:hover::after,
+.kanan ul li:hover::before {
+    width: 100%;
+}
+.desc {
+    position: absolute;
+    color: white;
+    padding: 40px 0 0 20px;
+    top: 0;
+    align-items: none;
+    display: none;
+    opacity: 1;
+    visibility: hidden;
+    transition: 0.5;
+}
+.desc.active {
+    filter: none;
+    display: block;
+
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.desc.active button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid white;
+}
+.desc button:hover {
+    background-color: #555555;
+    color: white;
+}
+.kanan ul li {
+    margin-bottom: 33px;
+    cursor: pointer;
+}
+
+/* ??Transaksi */
+/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&display=swap"); */
+
+.transaksi {
+    position: absolute;
+    color: white;
+    padding: 40px 0 0 1px;
+    top: 0;
+    align-items: none;
+    display: none;
+    opacity: 1;
+    visibility: hidden;
+    transition: 0.5;
+}
+.transaksi.active {
+    filter: none;
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    transition: 0.5s;
+}
+#title {
+    /* font-family: "Source Sans Pro", sans-serif; */
+    margin-top: 9px;
+    text-align: center;
+    color: white;
+}
+#description {
+    margin-top: 5px;
+    text-align: center;
+    color: white;
+}
+/* KOTAK DALAM */
+#survey-form {
+    width: 700px;
+    margin: 1px auto;
+    /* background-color: rgba(87, 49, 87, 0.9); */
+    border-radius: 7px;
+    padding: 10px 20px 20px 20px;
+    font-family: Roboto, sans-serif;
+    color: rgb(255, 255, 255);
+}
+#survey-form h1 {
+    font-size: 17px;
+    margin-top: 17px;
+}
+#survey-form label {
+    display: block;
+}
+
+#survey-form input[type="text"],
+#survey-form input[type="email"],
+#survey-form input[type="number"] {
+    margin-top: 7px;
+    width: 100%;
+    height: 27px;
+    border-radius: 3px;
+    border: 10px;
+    padding: 10px;
+}
+#dropdown h1 {
+    margin-bottom: 5px;
+}
+#dropdown {
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+}
+.p-radio {
+    padding-top: 50px;
+}
+#radio-label {
+    display: flex;
+    align-items: center;
+}
+.p-checkbox {
+    padding-top: 25px;
+}
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 10px;
+}
+.p-comment {
+    padding: 30px 0 10px;
+}
+textarea {
+    width: 100%;
+}
+#submit {
+    width: 100%;
+    padding: 20px 0;
+    margin: 15px 0;
+    border-radius: 3px;
+    background-color: rgb(71, 144, 146);
+    border: 2px solid rgb(50, 88, 79);
+    cursor: pointer;
+}
