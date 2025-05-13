@@ -1,0 +1,40 @@
+.radio-container-katagori {
+    color: #f7e479;
+    width: 300px;
+
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-left: 0.5rem;
+}
+.radio-container-katagori input {
+    cursor: pointer;
+    appearance: none;
+}
+
+.radio-container-katagori label {
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
+    color: grey;
+    transition: all 0.3s ease-in-out;
+}
+
+.radio-container-katagori input:checked + label {
+    color: #f7e479;
+}
+
+.glider-katagori {
+    position: absolute;
+    top: 38px;
+    width: 56px;
+    transform: translateX(7px);
+    height: 2px;
+    background-color: #f7e464;
+    transition: 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
+}
+
+.glider-katagori.pindah-glider {
+    transform: translateX(76px);
+    width: 92px;
+}

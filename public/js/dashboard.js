@@ -7,28 +7,65 @@ window.onload = function () {
 const tableDashboard = document.querySelector("body .dashboard");
 const tableBuku = document.querySelector("body .buku");
 
+const test = document.querySelector("#navbar header");
+const containerBuku = document.querySelector(".container-buku");
+const containerDashboard = document.querySelector("body .container-dashboard");
+
 function showContent(parameter) {
-    document.querySelector("body .dashboard").style.display = "none";
-    document.querySelector("body .buku").style.display = "none";
+    // document.querySelector("body .dashboard").style.display = "none";
+    // document.querySelector("body .buku").style.display = "none";
     if (parameter === 1) {
-        document.querySelector("body .dashboard").style.display = "block";
+        // tableDashboard.style.display = "block";
+        containerDashboard.classList.toggle("turun");
+        containerBuku.classList.toggle("naik");
     } else if (parameter === 2) {
-        document.querySelector("body .buku").style.display = "block";
+        // tableBuku.style.display = "block";
+        containerBuku.classList.toggle("naik");
+        containerDashboard.classList.toggle("turun");
     }
 }
+// tableBuku.style.display = "block";
+// tableDashboard.style.display = "block";
 
 // ?TAMBAH
 const tambahBuku = document.querySelector(".tambah-buku");
 const tambah = document.querySelector(".tambah-buku #penanda");
+const formTambahBuku = document.querySelector(".tambah-buku-form");
+
+const blurFilter = document.querySelector(".blur");
+
+function blur() {
+    formTambahBuku.classList.toggle("muncul-tambah");
+    blurFilter.classList.toggle("blur_active");
+}
+function removeBlur() {
+    formTambahBuku.classList.remove("muncul-tambah");
+    blurFilter.classList.remove("blur_active");
+}
 
 tambahBuku.addEventListener("mouseenter", function () {
     tambahBuku.classList.toggle("muncul");
-    console.log("test");
 });
 tambahBuku.addEventListener("mouseleave", function () {
     tambahBuku.classList.toggle("muncul");
 });
-
+tambahBuku.addEventListener("click", function () {
+    blur();
+});
+document.addEventListener("click", function (event) {
+    if (
+        !formTambahBuku.contains(event.target) &&
+        !tambahBuku.contains(event.target)
+    ) {
+        removeBlur();
+    }
+});
+document.addEventListener("keydown", (e) => {
+    if (e.keyCode === 27) {
+        removeBlur();
+    }
+});
+blurFilter.addEventListener("click", function (event) {});
 // ?GLIDE LIST BUKU
 const realGlide = document.querySelector(".real-glide");
 const blokGlide = document.querySelectorAll(".block-glide .anak-block-glide");
@@ -50,6 +87,31 @@ blokGlide[3].addEventListener("mouseenter", function () {
 blokGlide[4].addEventListener("mouseenter", function () {
     realGlide.style.transform = "translateY(464%)";
 });
-blokGlide[5].addEventListener("mouseenter", function () {
-    realGlide.style.transform = "translateY(580%)";
+
+// test.addEventListener("click", function () {
+//     containerBuku.classList.toggle("naik");
+//     containerDashboard.classList.toggle("turun");
+// });
+
+// ?GLIDE KATAGORI
+const gliderKatagori = document.querySelector(".glider-katagori");
+const radioEdukasi = document.querySelector("#radio-edukasi");
+const radioNonEdukasi = document.querySelector("#radio-noneedukasi");
+
+function pindahGlide(parameter) {
+    if (parameter === 1) {
+        gliderKatagori.classList.toggle("pindah-glider");
+    } else if (parameter === 2) {
+        gliderKatagori.classList.toggle("pindah-glider");
+    }
+}
+
+// !!SCROLL
+const listBuku = document.querySelector(".container-body-buku");
+const panahScroll = document.querySelector(".fixed");
+panahScroll.children[0].addEventListener("click", () => {
+    listBuku.scrollTo(500, 0);
+});
+panahScroll.children[1].addEventListener("click", () => {
+    listBuku.scrollTo(0, 500);
 });

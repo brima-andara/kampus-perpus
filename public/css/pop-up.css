@@ -1,34 +1,110 @@
-/* !!POP UP */
+.search {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1;
+}
+.search input {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 13;
+    transition: 0.5s;
+}
 
+.search input[type="text"] {
+    width: 300px;
+    color: white;
+    background: rgb(92, 92, 92);
+    height: 40px;
+    width: 500px;
+    border: none;
+    outline: none;
+    padding: 0 24px;
+    border-radius: 20px;
+}
+
+.search input[type="text"]::-moz-placeholder {
+    color: rgb(124, 124, 124);
+}
+
+.search input[type="text"]::placeholder {
+    color: rgb(124, 124, 124);
+}
+
+/* !!Container */
+.container {
+    /* background-color: purple; */
+    position: relative;
+    /* display: flex; */
+    height: 7999px;
+    width: 1003px;
+    margin-left: 210px;
+    margin-top: 100px;
+    /* background-color: purple; */
+}
+
+.container .box {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: 40px 20px;
+    background: rgb(90, 90, 90);
+    bottom: 0px;
+    transition: all 0.5s;
+}
+
+.container .box:hover {
+    bottom: 10px;
+}
+
+.container .box img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.container .box a {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    /* background-color: red; */
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* !!POP UP */
 .pop_up {
     position: fixed;
-    top: 50%;
+    top: 37%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 39px;
     width: 1215px;
     height: 616px;
     background-color: rgb(34, 34, 34);
-    display: none;
-    visibility: hidden;
+    pointer-events: none;
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
     z-index: 1000;
 }
 
 .pop_up.active {
-    filter: none;
     top: 50%;
-    visibility: visible;
     opacity: 1;
-    display: block;
-    transition: 0.5s;
+    pointer-events: auto;
 }
-.blur_active {
+
+.blur.blur_active {
     filter: blur(20px);
     pointer-events: none;
     user-select: none;
 }
+
 .pop_up .exit_button {
     position: absolute;
     top: -15px;
@@ -109,6 +185,10 @@
     opacity: 1;
     transition: 0.5;
 }
+.pop_up .flex .kanan ul li a {
+    color: inherit;
+    text-decoration: none;
+}
 .kanan ul li::before {
     margin-left: auto;
 }
@@ -118,7 +198,7 @@
     content: "";
     width: 0%;
     height: 2px;
-    background: #f44336;
+    background: #f7e479;
     display: block;
     transition: 0.5s;
 }
@@ -204,68 +284,101 @@
     text-align: center;
     color: white;
 }
-/* KOTAK DALAM */
-#survey-form {
-    width: 700px;
-    margin: 1px auto;
-    /* background-color: rgba(87, 49, 87, 0.9); */
-    border-radius: 7px;
-    padding: 10px 20px 20px 20px;
-    font-family: Roboto, sans-serif;
-    color: rgb(255, 255, 255);
+/* FORM BUAT PESANAN */
+.login-box {
+    position: absolute;
+    top: 334px;
+    left: 50%;
+    width: 843px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(24, 20, 20, 0);
+    box-sizing: border-box;
+    border-radius: 10px;
 }
-#survey-form h1 {
-    font-size: 17px;
-    margin-top: 17px;
+
+.login-box .user-box {
+    position: relative;
 }
-#survey-form label {
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #bdb8b8;
+    font-size: 12px;
+}
+
+.login-box form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+
+/* .login-box a:hover {
+    background: #03f40f;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03f40f, 0 0 25px #03f40f, 0 0 50px #03f40f,
+        0 0 100px #03f40f;
+} */
+
+.login-box a span {
+    position: absolute;
     display: block;
 }
 
-#survey-form input[type="text"],
-#survey-form input[type="email"],
-#survey-form input[type="number"] {
-    margin-top: 7px;
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.login-box a span:nth-child(1) {
+    bottom: 2px;
+    left: -100%;
     width: 100%;
-    height: 27px;
-    border-radius: 3px;
-    border: 10px;
-    padding: 10px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f7e479);
+    animation: btn-anim1 2s linear infinite;
 }
-#dropdown h1 {
-    margin-bottom: 5px;
-}
-#dropdown {
-    width: 100%;
-    height: 30px;
-    border-radius: 3px;
-}
-.p-radio {
-    padding-top: 50px;
-}
-#radio-label {
-    display: flex;
-    align-items: center;
-}
-.p-checkbox {
-    padding-top: 25px;
-}
-input[type="radio"],
-input[type="checkbox"] {
-    margin: 10px;
-}
-.p-comment {
-    padding: 30px 0 10px;
-}
-textarea {
-    width: 100%;
-}
-#submit {
-    width: 100%;
-    padding: 20px 0;
-    margin: 15px 0;
-    border-radius: 3px;
-    background-color: rgb(71, 144, 146);
-    border: 2px solid rgb(50, 88, 79);
-    cursor: pointer;
-}
+
+/* input[type="date"]::-webkit-datetime-edit {
+    color: transparent;
+} */
