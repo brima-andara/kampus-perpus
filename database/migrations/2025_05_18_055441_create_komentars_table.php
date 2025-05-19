@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMeminjamsTable extends Migration
+class CreateKomentarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateMeminjamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('meminjams', function (Blueprint $table) {
+        Schema::create('komentars', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('nim');
-            $table->string('nomor_hp');
-            $table->date('tanggal_pinjam');
+            $table->string('komentar');
             $table->string('seri');
-
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -31,6 +31,6 @@ class CreateMeminjamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meminjams');
+        Schema::dropIfExists('komentars');
     }
 }

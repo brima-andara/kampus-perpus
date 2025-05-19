@@ -12,7 +12,7 @@ body {
 .warna {
     width: 100%;
     height: 100%;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(32, 32, 32);
     z-index: 999;
 }
 /* TULISAN ATAS */
@@ -28,6 +28,7 @@ body {
 #main p {
     margin: 15px 0px;
 }
+
 /* GAMBAR */
 #img-div {
     padding: 17px;
@@ -44,6 +45,126 @@ body {
     text-align: center;
     margin-top: 20px;
 }
+/* INPUT */
+.batas {
+    margin-left: 15%;
+    width: 1000px;
+    height: 40px;
+}
+
+.input {
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif; */
+    font-weight: 500;
+    font-size: 0.8vw;
+    width: 100%;
+    height: 110%;
+    color: #fff;
+    background-color: rgb(28, 28, 30);
+    box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
+    border-radius: 0.4vw;
+    /* border-color: #c0c0c0 2px; */
+    /* border: none; */
+    /* outline: none; */
+    padding: 0.4vw;
+    transition: 0.4s;
+}
+
+.input::placeholder {
+    transform: translateX(50%);
+    color: white;
+    font-weight: bold;
+}
+
+.input:hover {
+    box-shadow: 0 0 0 0.15vw rgba(135, 207, 235, 0.186);
+}
+
+.input:focus {
+    box-shadow: 0 0 0 0.15vw skyblue;
+}
+
+/* KOMENTAR */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1200px;
+    margin: 20px auto;
+    /* text-align: center; */
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    width: inherit;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    background-color: #ff5e57;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.info {
+    margin-left: 15px;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.role {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.rating {
+    margin-top: 10px;
+}
+
+.star {
+    color: gold;
+    margin-right: 2px;
+}
+
+.review {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.read-more {
+    color: #ff5e57;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
 /* KATA-KATA */
 .sub-judul {
     text-align: center;
@@ -53,7 +174,7 @@ body {
 
 #tribute-info {
     width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
     text-align: center;
 }
 

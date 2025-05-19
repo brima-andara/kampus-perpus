@@ -115,3 +115,26 @@ panahScroll.children[0].addEventListener("click", () => {
 panahScroll.children[1].addEventListener("click", () => {
     listBuku.scrollTo(0, 500);
 });
+
+// *ISI BUKU EDUKASI BODY
+const isiBodyBuku = document.querySelectorAll(".buku-edukasi-body .isi");
+
+for (let i = 3; i < isiBodyBuku.length; i += 4) {
+    isiBodyBuku[i].style.flexDirection = "row";
+    isiBodyBuku[i].style.width = "102px";
+    isiBodyBuku[i].style.position = "relative";
+    isiBodyBuku[i].style.zIndex = "999999999999";
+    isiBodyBuku[i].style.pointerEvents = "auto";
+
+    console.log(isiBodyBuku[i]);
+}
+for (let i = 2; i < isiBodyBuku.length; i += 4) {
+    isiBodyBuku[i].style.paddingLeft = "63px";
+}
+for (let i = 1; i < isiBodyBuku.length; i += 4) {
+    isiBodyBuku[i].style.alignItems = "center";
+    isiBodyBuku[i].style.paddingRight = "56px";
+}
+for (let i = 0; i < isiBodyBuku.length; i += 4) {
+    isiBodyBuku[i].style.paddingLeft = "31px";
+}

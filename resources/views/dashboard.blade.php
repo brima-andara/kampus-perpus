@@ -21,6 +21,9 @@
         <title>Dashboard</title>
     </head>
     <body>
+{{-- **DATA  MAHASISWA PINJAM --}}
+                
+        </div>
         <div class="blur">
             <nav id="navbar">
                 <header>Dashboard</header>
@@ -50,76 +53,27 @@
                     </thead>
             
                     <tbody>
-                        <tr>
-                        <td>Alvin</td>
-                        <td>29993923</td>
-                        <td>$0.87</td>
-                        </tr>
-                        <tr>
-                        <td>Alan</td>
-                        <td>23923923</td>
-                        <td>$3.76</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonatha haoeu aoeu aoeu aoeu222n</td>
-                        <td>23322223232332323</td>
-                        <td>$7.0 23 2 32 0</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
-                        <tr>
-                        <td>Jonathan</td>
-                        <td>233232323</td>
-                        <td>$7.00</td>
-                        </tr>
+                        @foreach ($meminjam as $pinjam)
+                            
+                    <tr>
+                        <td>{{ $pinjam->nim }}</td>
+                        <td>{{$pinjam->nomor_hp}}</td>
+                        {{-- <td style="{{ \Carbon\Carbon::parse($pinjam->tanggal_pinjam)->isPast() ? '{{$merah}}' : '' }}">{{$pinjam->tanggal_pinjam}}</td> --}}
+                        <td>{{$pinjam->tanggal_pinjam}}</td>
+                       
+                        <td><a href="{{ route('get.book',['seri' => $pinjam->seri, 'nim' => $pinjam->nim]) }}" type="submit" class="btn btn-info btn-sm" style="background: transparent; border:black solid 1px; border-radius:5px">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a> </td>
+                        <form action="{{ route('dashboard.destroy.meminjam', $pinjam->seri) }}" method="post" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?');">
+                        @csrf
+                        @method('delete')
+                        <td><button  type="submit" class="btn btn-info btn-sm" style="background: transparent; border:black solid 1px; border-radius:5px">
+                                        <i class="fa-solid fa-trash"></i>
+                                </button> </td>
+                        </form>
+                    </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
         
@@ -138,12 +92,15 @@
                             </div>
                         </div>
                         <div class="kanan">
+                            <form action="">
                             <input
                             class="input"
                             type="text"
-                            name="text"
+                            name="search"
                             placeholder="cari buku"
                             />   
+
+                            </form>
                             <i class="fa-solid fa-magnifying-glass"></i>                 
                         </div>
                     </div>
@@ -157,9 +114,9 @@
                         </ul>
                     </div>
         {{-- *GLIDE LIST BUKU BODY --}}
-                    <div class="real-glide">
+                    {{-- <div class="real-glide">    
                         <li>u</li>
-                    </div>
+                    </div> --}}
                     <div class="block-glide">
                         <div class="anak-block-glide">
                             <li>test</li>
@@ -177,6 +134,8 @@
                             <li>test</li>
                         </div>
                     </div>
+
+                    {{-- !ISI BUKU --}}
                     <div class="container-body-buku">
                         
 
@@ -189,17 +148,30 @@
                             </ul>
                             <ul class = "isi">
                                 <li>{{$buku->seri}}</li>
-                                
                             </ul>
-                            <ul class = "isi">
+                            <ul class   = "isi">
                                 <li>{{$buku->stok}}</li>
-                               
                             </ul>
                             <ul class = "isi">
-                                <li>{{$buku->title}}</li>
+                                <form action="{{ route('dashboard.destroy', $buku->id) }}" method="post" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?');">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" id='sampah' class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash" ></i>
+                                        {{-- <li>{{$buku->id}}</li> --}}
+                                    </button>
+                                </form>
+                                <div class="batas"></div>
+                                    <a href="{{ route('book.edit', $buku->id) }}" type="submit" class="btn btn-info btn-sm" style="background: transparent; border:black solid 1px; border-radius:5px">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a> 
+
                             
                             </ul>
                             @endforeach
+                            <div class="kotak">
+                                
+                            </div>
 
                         </div> 
                         
@@ -249,7 +221,7 @@
                     <div class="user-box">
                         <textarea name="synopsis" id="" cols="30"></textarea>
                     </div>
-                    <select name="kategori" id="" required>
+                    <select name="kategori"  required>
                         <option value="Edukasi">eduksai</option>
                         <option value="Non Edukasi">non edukasi</option>
                     </select>

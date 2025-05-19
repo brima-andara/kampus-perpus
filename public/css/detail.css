@@ -1,0 +1,35 @@
+.container {
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-side,
+.center-side,
+.right-side {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.left-side p,
+.center-side p {
+    margin-bottom: 10px;
+}
+
+.left-side p strong,
+.center-side p strong {
+    color: white;
+}
+
+.right-side img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+}

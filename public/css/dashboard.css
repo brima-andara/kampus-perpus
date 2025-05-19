@@ -336,7 +336,7 @@ body .buku {
     overflow-y: scroll;
     scroll-behavior: smooth;
     height: 336px;
-    width: 140%;
+    width: 110%;
 }
 .buku-edukasi-body {
     display: flex;
@@ -344,7 +344,7 @@ body .buku {
 }
 .buku-edukasi-body .isi {
     width: 235px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -356,7 +356,15 @@ body .buku {
     z-index: 9;
     pointer-events: none;
 }
-.buku-edukasi-body .isi:nth-child(1) {
+.isi .batas {
+    width: 10px;
+}
+.buku-edukasi-body .isi #sampah {
+    background: transparent;
+    border: black solid 1px;
+    border-radius: 5px;
+}
+/* .buku-edukasi-body .isi:nth-child(1) {
     padding-left: 31px;
 }
 .buku-edukasi-body .isi:nth-child(2) {
@@ -367,8 +375,9 @@ body .buku {
     padding-left: 2px;
 }
 .buku-edukasi-body .isi:nth-child(4) {
-    padding-left: 2px;
-}
+    pointer-events: auto;
+    z-index: 9999999999999;
+} */
 .buku-edukasi-body .isi li {
     text-decoration: none;
     list-style: none;

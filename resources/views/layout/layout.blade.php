@@ -13,25 +13,30 @@
 />
   {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"> --}}
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+  
   <title>@yield('tittle', 'perpus kampus')</title>
 </head>
 <body>
   <nav>
-    <div class="kiri">aoeu</div>
-    <div class="kanan">
-      @if (auth()->check() && auth()->user()->role == 'admin')
-      <a class="nav-dashboard" href="{{ route('dashboard') }}">Dashboard</a>
-      <p>{{auth()->user()->name}}</p>
-      @endif
-    
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        @method('delete')
-        <button class="btn" type="submit">logout</button>
-      </form>
-      <i class="fa-solid fa-user"></i>
+    <div class="kiri">
+      <img src="{{ asset('images/logo.png') }}" data-route="{{ route('list.book') }}" alt="">
     </div>
+
+    @if (auth()->check() && auth()->user()->role == 'admin')
+    <a class="nav-dashboard" href="{{ route('dashboard') }}">Dashboard</a>
+    @endif
+
+
+    <form action="{{ route('logout') }}" method="post">
+    @csrf
+    @method('delete')
+    <button class="kanan">
+      <p>keluar</p>
+      <p>{{auth()->user()->name}}</p>
+      <i class="fa-solid fa-user"></i>
+    </button>
+    </form>
+    
   </nav>
   <main>
     @yield('content')
@@ -41,4 +46,5 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   {{-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> --}}
   <script src="{{ asset("js/reveal.js")}}"></script>
+  <script src="{{ asset("js/layout.js")}}"></script>
 </body>

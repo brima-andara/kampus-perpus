@@ -31,6 +31,20 @@ function searchById() {
     });
 }
 
+// !LAYOUT LOGOUT
+const layoutKanan = document.querySelector("nav .kanan");
+const layoutKananKeluar = document.querySelector("nav .kanan p:nth-child(1)");
+const layoutKananUser = document.querySelector("nav .kanan p:nth-child(2)");
+
+layoutKanan.addEventListener("mouseenter", function () {
+    layoutKananKeluar.classList.toggle("naik");
+    layoutKananUser.classList.toggle("naik");
+});
+layoutKanan.addEventListener("mouseleave", function () {
+    layoutKananKeluar.classList.toggle("naik");
+    layoutKananUser.classList.toggle("naik");
+});
+
 // ! MEMBUAT POP UP
 fetch("http://localhost:8000/api/books") // sesuaikan dengan URL Laravel kamu
     .then((response) => response.json())
@@ -45,12 +59,30 @@ const bodyBlur = document.getElementById("blur-section");
 
 function munculPopUp(element) {
     const title = element.getAttribute("data-title");
-    const img = element.getAttribute("data-b");
+    const img = element.getAttribute("data-img");
     const synopsis = element.getAttribute("data-synopsis");
+    const bookId = element.getAttribute("data-id");
+    console.log(bookId);
 
+    document.getElementById("book_id").value = bookId;
     document.getElementById("popup-img").src = img;
     document.getElementById("popup-title").textContent = title;
     document.getElementById("popup-synopsis").textContent = synopsis;
+    // document.getElementById("popup-ulasan").href = `{{ route('ulasan.buku', ${bookId}) }}`;
+
+    // const ulasanUrl = `{{ route('ulasan.buku', ':id') }}`.replace(':id', bookId);
+    // document.getElementById("popup-ulasan").querySelector('a').href = ulasanUrl;
+
+    let ulasanUrl = document
+        .getElementById("popup-ulasan")
+        .querySelector("a")
+        .getAttribute("data-route");
+
+    // Ganti placeholder :id dengan bookId
+    ulasanUrl = ulasanUrl.replace(":id", bookId);
+
+    // Set href dengan URL yang sudah diganti
+    document.getElementById("popup-ulasan").querySelector("a").href = ulasanUrl;
 
     popUp.classList.add("active");
     bodyBlur.classList.add("active-blur");
@@ -115,10 +147,10 @@ transaksiButton.addEventListener("click", function () {
     listPopUp.style.transition = 0.5;
 });
 
-// blur();
+// munculPopUp();
 // transaksi.classList.toggle("active");
-// listPopUp.style.opacity = 0;
-// listPopUp.style.visibility = "hidden";
+// listPopUp.style.opacity = 1;
+// listPopUp.style.visibility = "auto";
 // listPopUp.style.transition = 0.5;
 
 // ?? Exit Pop UP

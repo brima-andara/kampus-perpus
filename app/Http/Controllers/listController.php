@@ -17,7 +17,9 @@ class listController extends Controller
     {
         $search = $request->input('search');
         $book = Book::where('title','LIKE',"%$search%")->get();
-        return view('welcome',compact('book'));
+        $merah = "color: red";
+        
+        return view('welcome',compact('book','merah'));
 
     }
     
@@ -32,8 +34,7 @@ class listController extends Controller
         // ]);
     
         // Ambil data buku berdasarkan book_id
-        // $book = Book::find($request->title);
-        dd($request);
+        $book = Book::find($request->book_id);
     
         // Cek apakah stok cukup untuk peminjaman
         if ($book->stok > 0) {
@@ -46,12 +47,12 @@ class listController extends Controller
                 'nomor_hp' => $request->nomor_hp,
                 'tanggal_pinjam' => $request->tanggal_pinjam,
                 'book_id' => $request->book_id, // Menyimpan ID buku yang dipinjam
+                'seri' => $book->seri
             ]);
-    
-            // Return response atau redirect dengan pesan sukses
-            return response()->json(['success' => 'Buku berhasil dipinjam, stok berhasil dikurangi.'], 200);
+            
+            return redirect() -> route('list.book')->with('success', 'User berhasil diperbarui');
+
         } else {
-            // Jika stok tidak mencukupi
             return response()->json(['error' => 'Stok buku tidak cukup.'], 400);
         }
     }
